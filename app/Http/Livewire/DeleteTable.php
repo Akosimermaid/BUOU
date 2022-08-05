@@ -151,20 +151,20 @@ final class DeleteTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    
+   
     public function actions(): array
     {
        return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-black px-3 py-2.5 m-1 rounded text-sm')
-               ->route('record_research.edit', ['record_research' => 'id']),
+            Button::make('edit', 'Edit')
+                ->class('bg-indigo-500 cursor-pointer text-green px-3 py-2.5 m-1 rounded text-sm'),
+               // ->route('AddController.viewAdd', ['record_researches' => 'id']),
                
-               
-            /*
+              
+            
            Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('record_research.destroy', ['record_research' => 'id'])
-               ->method('delete') */
+               ->class('bg-red-500 cursor-pointer text-red px-3 py-2 m-1 rounded text-sm')
+              // ->route('record_research.destroy', ['record_researches' => 'id'])
+             //  ->method('delete') 
         ];
     }
     
@@ -183,16 +183,15 @@ final class DeleteTable extends PowerGridComponent
      * @return array<int, RuleActions>
      */
 
-    
-    public function actionRules(): array
-    {
-       return [
+ //   public function actionRules(): array
+ //   {
+  //     return [
 
            //Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($record_research) => $record_research->id === 1)
-                ->hide(),
-        ];
-    }
+  //          Rule::button('edit')
+  //              ->when(fn($record_research) => $record_research->id === 1)
+  //              ->hide(),
+  //      ];
+  //  }
    
 }

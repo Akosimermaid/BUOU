@@ -24,12 +24,12 @@
                 float:left;
                 margin-right:1%;
             }
-            #deletetab{
+            #Add{
              
-             float:center;
-             margin:1%;
-             margin-top:0;
-             padding:5%;
+                float:center;
+                margin:2%;
+                margin-top:0;
+                padding:5%;
             }
             label, input {
                 display: block;
@@ -41,6 +41,7 @@
             h1{
                 font-size: 20px;
             }
+
         </style>
     </head>
     <body class="font-sans antialiased">
@@ -50,108 +51,98 @@
             <!-- Page Content -->
             <main>
                 @include('layouts.sidebar')
+                
                 <div class="py-12">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" id ="deletetab">
-                    @if(Session::get('Deleted'))
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" id ="Add">
+                        @if(Session::get('success'))
                           
-                          <alertalert-success>
-                              {{Session::get('Deleted')}}
-                          </alertalert-success>
-                        
-                      @endif
+                            <alertalert-success>
+                                {{Session::get('success')}}
+                            </alertalert-success>
+                          
+                        @endif
 
-                      @if(Session::get('fail'))
-                          <div class="alert alert-danger">
-                              {{Session::get('fail')}}
-                          </div>
-                      @endif
-                        <div class="p-6 bg-white border-b border-gray-200">
-                            <h1> Delete Records </h1>
-                            <br> <br>
-
-                            <div class="container"> 
-                                <form action = "find">
-                                    <input type="text" placeholder="Search" name="Search">
-                                </form>
+                        @if(Session::get('fail'))
+                            <div class="alert alert-danger">
+                                {{Session::get('fail')}}
                             </div>
+                        @endif
+                    <h1>  Edit Records </h1>
+                        <div class="p-6 bg-white">
 
-                            <form action = "destroy" method = "post" class="py-3">
+                            <form action = "edit" method = "post" class="py-3">
                                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
 
+                                <input type = "hidden" name = "id" value = "{{$posts->id}}">
                                 <label id="label">Date:
-                                    <input type="date" name= "Date" value="{{ old ('Date')}}">
-                                    
+                                    <input type="date" name= "Date" value="{{$posts->Date}}">
+                                    <span style="color:red">@error('Date'){{$message}} @enderror</span>
                                 </label>
      
                                 <label id="label">Title:
-                                    <input type ="text" name ="Title" value="{{ old ('Title')}}">
-                                    
+                                    <input type ="text" name ="Title" value="{{$posts->Title}}">
+                                    <span style="color:red">@error('Title'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">Researchers Name:
-                                    <input type ="text" name ="Research_Name" value="{{ old ('Research_Name')}}">
-                                 
+                                    <input type ="text" name ="Research_Name" value="{{$posts->Research_Name}}">
+                                    <span style="color:red">@error('Researchers Name'){{$message}} @enderror</span>
                                 </label>
        
                                 <label id="label">Partner Agency:
-                                    <input type ="text" name ="Partner_Agency" value="{{ old ('Partner_Agency')}}">
-                                   
+                                    <input type ="text" name ="Partner_Agency" value="{{$posts->Partner_Agency}}">
+                                    <span style="color:red">@error('Partner Agency'){{$message}} @enderror</span>
                                 </label>
                                 
 
                                 <label id="label">Designation:
-                                    <input type ="text" name="Designation" value="{{ old ('Designation')}}">
-                                  
+                                    <input type ="text" name="Designation" value="{{$posts->Designation}}">
+                                    <span style="color:red">@error('Designation'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">Start Date:
-                                    <input type="date" name="Start_Date" value="{{ old ('Start_Date')}}">
-                                    
+                                    <input type="date" name="Start_Date" value="{{$posts->Start_Date}}">
+                                    <span style="color:red">@error('Start Date'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">Target Date:
-                                    <input type="date" name="Target_Date" value="{{ old ('Target_Date')}}">
-                                    
+                                    <input type="date" name="Target_Date" value="{{$posts->Target_Date}}">
+                                    <span style="color:red">@error('End Date'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">CREC
-                                    <input type ="text" name="CREC" value="{{ old ('CREC')}}">
-                                   
+                                    <input type ="text" name="CREC" value="{{$posts->CREC}}">
+                                    <span style="color:red">@error('CREC'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">URECOM
-                                    <input type ="text" name="URECOM" value="{{ old ('URECOM')}}">
-                                    
+                                    <input type ="text" name="URECOM" value="{{$posts->URECOM}}">
+                                    <span style="color:red">@error('URECOM'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">Funds
-                                    <select name = "Fund" value="{{ old ('Fund')}}">
+                                    <select name = "Fund" value="{{$posts->Fund}}">
                                         <option value="Internal"> Internal</option>
                                         <option value="External"> External</option>
                                         <option value="Others"> Others</option>
                                     </select>
-                                    
+                                    <span style="color:red">@error('funds'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">Budget
-                                    <input type = "number" name="Budget" min="1" step="any" value="{{ old ('Budget')}}">
+                                    <input type = "number" name="Budget" min="1" step="any" value="{{$posts->Budget}}">
                                 </label>
 
                                 <label id="label">Remarks
-                                    <input type = "text" name="Remarks" value="{{ old ('Remarks')}}">
+                                    <input type = "text" name="Remarks" value="{{$posts->Remarks}}">
                                 </label>
 
                                 <x-button class="ml-3">
                                     Submit
                                 </x-button>
                             </form>
-                            <a href="/">
-                                <x-button class="ml-3 bg-red">
-                                    Cancel
-                                </x-button>
-                            </a>
+        
                         </div>
-
                     </div>
                 </div>
             </main>

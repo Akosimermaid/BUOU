@@ -140,6 +140,11 @@
                                     Submit
                                 </x-button>
                             </form>
+                            <a href="/">
+                                <x-button class="ml-3 bg-red">
+                                    Cancel
+                                </x-button>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -24,10 +24,7 @@ final class ResearchTable extends PowerGridComponent
     {
         
         return [
-            Header::make()->showSearchInput(),
-            Footer::make()
-                ->showPerPage()
-                ->showRecordCount(),
+            Footer::make()->showRecordCount(),
         ];
     }
 
@@ -78,7 +75,7 @@ final class ResearchTable extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            
+            ->addColumn('id')
             ->addColumn('Date_formatted', fn (record_research $model) => Carbon::parse($model->Date)->format('d/m/Y'))
             ->addColumn('Title')
             ->addColumn('Research_Name')
@@ -109,6 +106,8 @@ final class ResearchTable extends PowerGridComponent
     public function columns(): array
     {
         return [
+
+            Column::make('ID', 'id'), 
 
             Column::make('DATE', 'Date_formatted', 'Date'),
 

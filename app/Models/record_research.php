@@ -29,4 +29,5 @@ class record_research extends Model
         'Remarks',
     ];
     
+    
 }

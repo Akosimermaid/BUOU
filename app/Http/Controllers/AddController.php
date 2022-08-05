@@ -46,14 +46,12 @@ class AddController extends Controller
         if($query){
             
             return back()->with('success','DATA HAS BEEN SUCESSFULLY ADDED');
-            redirect('dashboard');
+            redirect('/');
         }else{
             return back()->with('fail','SOMETHING WENT WRONG');
         }
     }
 
 
-    function edit($id){
-        echo $id;
-    }
+    
 }

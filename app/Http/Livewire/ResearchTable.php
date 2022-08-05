@@ -85,6 +85,7 @@ final class ResearchTable extends PowerGridComponent
             ->addColumn('Target_Date_formatted', fn (record_research $model) => Carbon::parse($model->Target_Date)->format('d/m/Y'))
             ->addColumn('CREC')
             ->addColumn('URECOM')
+            ->addColumn('Fund')
             ->addColumn('Budget')
             ->addColumn('Remarks');
     }
@@ -127,7 +128,10 @@ final class ResearchTable extends PowerGridComponent
 
             Column::make('URECOM', 'URECOM'),
 
+            Column::make('FUND', 'Fund'),
+
             Column::make('BUDGET', 'Budget'),
+
 
             Column::make('REMARKS', 'Remarks'),
 
@@ -154,16 +158,16 @@ final class ResearchTable extends PowerGridComponent
     {
        return [
            Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('record_research.edit', ['record_researches' => 'id']),
+               ->class('bg-indigo-500 cursor-pointer text-black px-3 py-2.5 m-1 rounded text-sm')
+               //->route('Delete.find', ['record_researches' => 'id']),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
                ->route('record_research.destroy', ['record_researches' => 'id'])
                ->method('delete')
         ];
-    }
-    */
+    }*/
+    
 
     /*
     |--------------------------------------------------------------------------

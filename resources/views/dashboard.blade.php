@@ -3,6 +3,14 @@
     <div class="py-12">
         
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" id ="table">
+
+                    @if(Session::get('success'))
+                          
+                          <alertalert-success>
+                              {{Session::get('success')}}
+                          </alertalert-success>
+                        
+                      @endif
                 <div class="p-4 bg-white border-b border-gray-200">
                     <a href="Add">
                         <x-button class="ml-3">

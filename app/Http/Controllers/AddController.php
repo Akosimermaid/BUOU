@@ -45,8 +45,8 @@ class AddController extends Controller
 
         if($query){
             
-            return back()->with('success','DATA HAS BEEN SUCESSFULLY ADDED');
-            redirect('/');
+            return redirect()-> route('dashboard')->with('success','DATA HAS BEEN SUCESSFULLY ADDED');
+            
         }else{
             return back()->with('fail','SOMETHING WENT WRONG');
         }

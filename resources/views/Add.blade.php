@@ -54,13 +54,6 @@
                 
                 <div class="py-12">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" id ="Add">
-                        @if(Session::get('success'))
-                          
-                            <alertalert-success>
-                                {{Session::get('success')}}
-                            </alertalert-success>
-                          
-                        @endif
 
                         @if(Session::get('fail'))
                             <div class="alert alert-danger">

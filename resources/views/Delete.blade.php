@@ -29,10 +29,10 @@
              float:center;
              margin:1%;
              margin-top:0;
-             padding:5%;
+             padding:3%;
             }
             label, input {
-                display: block;
+                display: inline-block;
             }
 
             label {
@@ -50,7 +50,7 @@
             <!-- Page Content -->
             <main>
                 @include('layouts.sidebar')
-                <div class="py-12">
+                <div class="py-6">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" id ="deletetab">
                     @if(Session::get('Deleted'))
                           
@@ -69,28 +69,23 @@
                             <h1> Delete Records </h1>
                             <br> <br>
 
-                            <div class="container"> 
-                                <form action = "find">
-                                    <input type="text" placeholder="Search" name="Search">
-                                </form>
-                            </div>
-
-                            <form action = "destroy" method = "post" class="py-3">
+                            <form action = "destroy" method = "get" class="py-3">
                                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
-
+                                
+                                <input type = "hidden" name = "id" value = "{{ ('Date')}}">
                                 <label id="label">Date:
                                     <input type="date" name= "Date" value="{{ old ('Date')}}">
                                     
                                 </label>
      
                                 <label id="label">Title:
-                                    <input type ="text" name ="Title" value="{{ old ('Title')}}">
-                                    
+                                    <input type ="text" name ="Title" value="">
+                                    <span style="color:red">@error('Title'){{$message}} @enderror</span>
                                 </label>
 
                                 <label id="label">Researchers Name:
-                                    <input type ="text" name ="Research_Name" value="{{ old ('Research_Name')}}">
-                                 
+                                    <input type ="text" name ="Research_Name" value="">
+                                    <span style="color:red">@error('Researchers Name'){{$message}} @enderror</span>
                                 </label>
        
                                 <label id="label">Partner Agency:
@@ -141,17 +136,34 @@
                                     <input type = "text" name="Remarks" value="{{ old ('Remarks')}}">
                                 </label>
 
+                                <br>
+
                                 <x-button class="ml-3">
-                                    Submit
+                                    Delete
                                 </x-button>
                             </form>
                             <a href="/">
-                                <x-button class="ml-3 bg-red">
+                                <x-button class="ml-3">
                                     Cancel
                                 </x-button>
                             </a>
                         </div>
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            <div class="container"> 
+                                <form action = "find" method = "get">
+                                    <input type="search" placeholder="Search" name="Search">
+                                    <x-button class="ml-3">
+                                        Search
+                                    </x-button>
+                                </form>
+                            </div>
 
+
+                        </div>
+
+                        <div class="" id ="deletetab">
+                            <livewire:research-table/>
+                        </div>
                     </div>
                 </div>
             </main>

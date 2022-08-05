@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AddController;
 use App\Http\Controllers\DeleteController;
+use App\Http\Controllers\EditController;
 /*
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +29,11 @@ Route::get('Add',[AddController::class, 'viewAdd']);
 Route::post('create',[AddController::class, 'create']);
 
 //This is the routing for Edit Data
-Route::get('Edit',[App\Http\Controllers\EditController::class, 'viewEdit']);
+Route::get('Edit',[EditController::class, 'viewEdit']);
 Route::post('change/{id}',[EditController::class, 'change']);
 
 //This is the Routing for Deleting Data
 Route::get('Delete',[DeleteController::class, 'viewDelete']);
 Route::get('destroy',[DeleteController::class, 'destroy']);
-Route::get('find',[DeleteController::class, 'find']);
+Route::get('Delete.find',[DeleteController::class, 'find']);
+
